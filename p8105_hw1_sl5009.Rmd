@@ -64,7 +64,6 @@ The character variables still can't be numeric unless numbers involved in the ch
 
 ```{r}
 data("penguins", package = "palmerpenguins")
-penguins
 row<-nrow(penguins)
 col<-ncol(penguins)
 name<-names(penguins)
@@ -80,6 +79,7 @@ The mean of flipper length is `r mean_flipper`.
 
 
 ```{r}
-
+ggplot(penguins, aes(x =bill_length_mm, y = flipper_length_mm, color= species)) + geom_point(na.rm = TRUE)
+ggsave("scatter_plot.pdf", height = 4, width = 6)
 ```
 
