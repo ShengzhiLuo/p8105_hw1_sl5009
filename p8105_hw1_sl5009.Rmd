@@ -9,7 +9,7 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r,echo=FALSE}
+```{r,echo=FALSE,message=FALSE}
 library(tidyverse)
 ```
 ##Problem 1
@@ -53,10 +53,9 @@ As shown above, numeric variables and logical variables can have mean while char
 ```{r,eval=FALSE}
 ##Apply as.numeric function
 num_log <- as.numeric(pull(hw1_df,random_sample_pos))
-num_char<-as.numeric(pull(hw1_df,vec_char))
+num_char <-as.numeric(pull(hw1_df,vec_char))
 num_factor<-as.numeric(pull(hw1_df,vec_factor))
-num_char
-num_log
-num_factor
+
 ```
 
+The character variables still can't be numeric unless numbers involved in the character vector and that's why we can't have mean of these variables. Factor vector can be converted into numeric varibales. Although the numbers they converted can be arbitrary numbers, there are also no mean for factor variables.
