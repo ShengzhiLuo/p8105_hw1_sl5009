@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r,echo=FALSE,message=FALSE}
 library(tidyverse)
 ```
-##Problem 1
+## Problem 1
 
 Let's create a data frame.
 
@@ -27,7 +27,7 @@ hw1_df = tibble(
 hw1_df
 ```
 
-Now we try to take teh mean of each variable.
+Now we try to take the mean of each variable.
 ```{r}
 #mean of numeric variable
 mean(pull(hw1_df,random_sample))
@@ -38,19 +38,19 @@ mean(pull(hw1_df,random_sample))
 mean(pull(hw1_df,random_sample_pos))
 ```
 
-```{r}
+```{r,warning=FALSE}
 #mean of character vector
 mean(pull(hw1_df,vec_char))
 ```
 
-```{r}
+```{r,warning=FALSE}
 #mean of factor vector
 mean(pull(hw1_df,vec_factor))
 ```
 
 As shown above, numeric variables and logical variables can have mean while character variables and factor varibles don't have mean.
 
-```{r,eval=FALSE}
+```{r,eval=FALSE,warning=FALSE}
 ##Apply as.numeric function
 num_log <- as.numeric(pull(hw1_df,random_sample_pos))
 num_char <-as.numeric(pull(hw1_df,vec_char))
@@ -59,3 +59,27 @@ num_factor<-as.numeric(pull(hw1_df,vec_factor))
 ```
 
 The character variables still can't be numeric unless numbers involved in the character vector and that's why we can't have mean of these variables. Factor vector can be converted into numeric varibales. Although the numbers they converted can be arbitrary numbers, there are also no mean for factor variables.
+
+## Problem 2
+
+```{r}
+data("penguins", package = "palmerpenguins")
+penguins
+row<-nrow(penguins)
+col<-ncol(penguins)
+name<-names(penguins)
+name2<-levels(penguins$species)
+name3<-levels(penguins$island)
+max_bill_length<-max(penguins$bill_length_mm,na.rm = TRUE)
+mean_flipper<- mean(penguins$flipper_length_mm,na.rm = TRUE)
+
+```
+The data includes `r name` with species having `r name2` and island having `r name3`. The maximum bill length is `r max_bill_length`.
+The size of the row is `r row` and the size of the column is `r col`.
+The mean of flipper length is `r mean_flipper`.
+
+
+```{r}
+
+```
+
